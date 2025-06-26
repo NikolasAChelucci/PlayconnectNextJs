@@ -2,19 +2,22 @@
 
 import { useEffect, useState } from 'react';
 import Script from 'next/script';
-import Navbar from '../components/navbar';  // Importa a Navbar
+import Navbar from '../components/navbar'; // Componente reutilizável
 
 export default function Projeto() {
-  const [isLightMode, setIsLightMode] = useState(true);
+  const [isLightMode, setIsLightMode] = useState(null); // Inicialmente indefinido para evitar flash
 
+  // Aplica o tema salvo no localStorage logo que o componente monta
   useEffect(() => {
     const storedTheme = localStorage.getItem('theme');
-    if (storedTheme === 'dark') {
-      setIsLightMode(false);
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    if (storedTheme === 'dark' || (!storedTheme && prefersDark)) {
       document.documentElement.classList.add('dark');
+      setIsLightMode(false);
     } else {
-      setIsLightMode(true);
       document.documentElement.classList.remove('dark');
+      setIsLightMode(true);
     }
   }, []);
 
@@ -30,9 +33,12 @@ export default function Projeto() {
     }
   };
 
+  if (isLightMode === null) return null; // Evita o flash de modo errado durante carregamento
+
   return (
     <main className={`${isLightMode ? 'bg-white text-black' : 'bg-black text-white'} min-h-screen px-5 py-12 transition-colors duration-500`}>
       
+      {/* Navbar Reutilizável */}
       <Navbar isLightMode={isLightMode} toggleTheme={toggleTheme} />
 
       <section className="max-w-4xl mx-auto mb-10">
@@ -78,7 +84,7 @@ export default function Projeto() {
               {
                 fase: 'FASE 3: LANÇAMENTO (Q1 2025)',
                 descricao: 'Release inicial para parceiros selecionados',
-                emoji: '🛠️'
+                emoji: '🚀'
               }
             ].map((item, index) => (
               <div key={index} className="flex items-start gap-3">
@@ -97,9 +103,9 @@ export default function Projeto() {
         <p>© 2025 PlayConnect. Todos os direitos reservados.</p>
       </footer>
 
+      {/* Scripts externos */}
       <Script src="https://vlibras.gov.br/app/vlibras-plugin.js" strategy="afterInteractive" />
       <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" strategy="afterInteractive" />
-      <Script src="/JS/Projeto.js" strategy="afterInteractive" />
     </main>
   );
 }
