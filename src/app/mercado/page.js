@@ -1,84 +1,101 @@
 'use client';
 
+import { useState, useEffect } from 'react';
 import Script from 'next/script';
+import Navbar from '../components/navbar'; // Importando Navbar reutilizável
 
 export default function Mercado() {
+  const [isLightMode, setIsLightMode] = useState(false);
+  const [games, setGames] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  const toggleTheme = () => setIsLightMode(prev => !prev);
+
+  useEffect(() => {
+    const fetchGames = async () => {
+      try {
+        const res = await fetch('/data/games.json');
+        if (!res.ok) throw new Error('Falha ao carregar dados');
+        const data = await res.json();
+        setGames(data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    };
+
+    fetchGames();
+  }, []);
+
   return (
-    <main>
-      <header>
-        <h1>
-          <a href="/">PlayConnect</a>
-        </h1>
+    <main className={`${isLightMode ? 'bg-white text-black' : 'bg-black text-white'} min-h-screen px-5 py-12 transition-colors duration-500`}>
 
-        {/* Switcher Dark/Light */}
-        <div className="form-check form-switch d-flex align-items-center gap-2">
-          <input className="form-check-input" type="checkbox" id="themeToggle" title="Alternar tema claro/escuro" />
-          <label className="form-check-label" htmlFor="themeToggle">
-            <span id="themeIcon">🌞</span>
-          </label>
+      <Navbar isLightMode={isLightMode} toggleTheme={toggleTheme} />
+
+      <section className="pesquisa-container flex flex-col gap-12 justify-center px-4 sm:px-8 max-w-5xl mx-auto">
+
+        {/* Bloco fixo 1 */}
+        <div className={`pesquisa p-8 rounded-lg shadow-lg text-center hover:scale-105 transition-transform duration-300 ${isLightMode ? 'bg-gray-100 text-black' : 'bg-gray-900 text-white'}`}>
+          <h2 className="text-3xl font-bold uppercase mb-4 text-pink-500">O Mercado de Jogos Independentes no Brasil</h2>
+          <p className="text-base leading-relaxed max-w-4xl mx-auto">
+            O mercado de jogos independentes no Brasil tem mostrado um crescimento notável nos últimos anos, destacando-se pela diversidade e criatividade dos títulos produzidos.
+          </p>
         </div>
 
-        <nav>
-          <ul>
-            <li><a href="/">Home</a></li>
-            <li><a href="/aboutus">Sobre nós</a></li>
-            <li><a href="/mercado">Mercado</a></li>
-            <li><a href="/projeto">Projeto</a></li>
-            <li><a href="/form">Contato</a></li>
-          </ul>
-        </nav>
-      </header>
-
-      <section className="pesquisa-container">
-        <div className="pesquisa">
-          <h2>O Mercado de Jogos Independentes no Brasil</h2>
-          <p>O mercado de jogos independentes no Brasil tem mostrado um crescimento notável nos últimos anos...</p>
+        {/* Bloco fixo 2 */}
+        <div className={`pesquisa p-8 rounded-lg shadow-lg text-center hover:scale-105 transition-transform duration-300 ${isLightMode ? 'bg-gray-100 text-black' : 'bg-gray-900 text-white'}`}>
+          <h2 className="text-3xl font-bold uppercase mb-4 text-pink-500">Desafios para se Destacar no Mercado Global</h2>
+          <p className="text-base leading-relaxed max-w-4xl mx-auto">
+            Desenvolvedores brasileiros enfrentam desafios significativos para se destacar globalmente, como escassez de recursos e visibilidade.
+          </p>
         </div>
 
-        <div className="pesquisa">
-          <h2>Desafios para se Destacar no Mercado Global</h2>
-          <p>Apesar do crescimento, os desenvolvedores brasileiros enfrentam desafios significativos...</p>
+        {/* Lista dinâmica com dados do JSON */}
+        <div className={`pesquisa p-8 rounded-lg shadow-lg text-center hover:scale-105 transition-transform duration-300 ${isLightMode ? 'bg-gray-100 text-black' : 'bg-gray-900 text-white'}`}>
+          <h2 className="text-3xl font-bold uppercase mb-6 text-pink-500">Jogos Brasileiros que se Destacam</h2>
+
+          {loading && <p>Carregando jogos...</p>}
+          {error && <p className="text-red-500">Erro: {error}</p>}
+
+          {!loading && !error && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+              {games.map((game) => (
+                <div key={game.id} className={`rounded-md shadow-md overflow-hidden transform transition-transform hover:scale-105 ${isLightMode ? 'bg-gray-200 text-black' : 'bg-gray-800 text-white'}`}>
+                  <img src={game.image} alt={game.title} className="w-full h-48 object-cover" />
+                  <div className="p-4">
+                    <h3 className="text-xl font-semibold text-pink-400 mb-2">{game.title}</h3>
+                    <p className="text-sm leading-relaxed mb-2">{game.description}</p>
+                    <p className="text-sm font-semibold">Vendas: <span className="text-pink-500">{game.vendas.toLocaleString()}</span></p>
+                    <p className="text-sm font-semibold">Pessoas em Live: <span className="text-pink-500">{game.views.toLocaleString()}</span></p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
-        <div className="pesquisa">
-          <h2>Jogos Brasileiros que se Destacam</h2>
-          <div className="pesquisa-img">
-            <img src="/images/dandara.jpg" alt="Dandara" />
-            <img src="/images/pocket.jpg" alt="Pocket Bravery" />
-          </div>
-          <p>Alguns jogos brasileiros conseguiram se destacar no mercado internacional...</p>
+        {/* Conteúdo fixo adicional (resumido para brevidade) */}
+        <div className={`pesquisa p-8 rounded-lg shadow-lg text-center hover:scale-105 transition-transform duration-300 ${isLightMode ? 'bg-gray-100 text-black' : 'bg-gray-900 text-white'}`}>
+          <h2 className="text-3xl font-bold uppercase mb-4 text-pink-500">O Trabalho dos Desenvolvedores Brasileiros</h2>
+          <p className="text-base leading-relaxed max-w-4xl mx-auto">Paixão, resiliência e criatividade marcam a jornada dos desenvolvedores no Brasil.</p>
         </div>
 
-        <div className="pesquisa">
-          <h2>O Trabalho dos Desenvolvedores Brasileiros</h2>
-          <div className="pesquisa-img">
-            <img src="/images/devs.jpg" alt="Desenvolvedores brasileiros" />
-          </div>
-          <p>O trabalho dos desenvolvedores brasileiros é caracterizado por paixão e resiliência...</p>
-        </div>
-
-        <div className="pesquisa">
-          <h2>A Influência dos Streamers no Crescimento do Mercado</h2>
-          <div className="pesquisa-img">
-            <img src="/images/streamer.jpg" alt="Streamers" />
-          </div>
-          <p>Os streamers desempenham um papel fundamental na promoção e divulgação dos jogos independentes...</p>
-        </div>
-
-        <div className="pesquisa">
-          <h2>Como o Projeto PlayConnect Ajudaria no Crescimento do Mercado</h2>
-          <p>O projeto PlayConnect pode ser um fator crucial para impulsionar o crescimento do mercado de jogos independentes no Brasil...</p>
+        <div className={`pesquisa p-8 rounded-lg shadow-lg text-center hover:scale-105 transition-transform duration-300 ${isLightMode ? 'bg-gray-100 text-black' : 'bg-gray-900 text-white'}`}>
+          <h2 className="text-3xl font-bold uppercase mb-4 text-pink-500">A Influência dos Streamers</h2>
+          <p className="text-base leading-relaxed max-w-4xl mx-auto">Streamers ajudam a ampliar o alcance e engajamento dos jogos independentes.</p>
         </div>
       </section>
 
-      <footer>
+      {/* Rodapé */}
+      <footer className={`mt-16 text-center text-sm ${isLightMode ? 'text-gray-700' : 'text-gray-400'}`}>
         <p>© 2025 PlayConnect | Conectando criadores e jogadores</p>
       </footer>
 
-      {/* Scripts Externos */}
+      {/* Scripts externos */}
       <Script src="https://vlibras.gov.br/app/vlibras-plugin.js" strategy="afterInteractive" />
       <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" strategy="afterInteractive" />
-      <Script src="/JS/Mercado.js" strategy="afterInteractive" />
     </main>
   );
 }

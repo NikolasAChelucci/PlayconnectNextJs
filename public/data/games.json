@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "title": "Dandara",
+    "description": "Um jogo de plataforma inspirado na cultura brasileira, destacando uma heroína forte e inovadora.",
+    "image": "/images/dandara.jpg",
+    "vendas": 120000,           
+    "views": 3500        
+  },
+  {
+    "id": 2,
+    "title": "Pocket Bravery",
+    "description": "Um RPG aventureiro com uma estética charmosa e narrativa envolvente que conquistou fãs ao redor do mundo.",
+    "image": "/images/pocket.jpg",
+    "vendas": 90000,
+    "views": 2800
+  },
+  {
+    "id": 3,
+    "title": "Horizon Chase",
+    "description": "Corridas retrô com visual vibrante e trilha sonora envolvente, levando o Brasil ao topo das pistas globais.",
+    "image": "/images/horizonchase.jpg",
+    "vendas": 150000,
+    "views": 5000
+  }
+]
