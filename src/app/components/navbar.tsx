@@ -15,6 +15,7 @@ export default function Navbar({ isLightMode, toggleTheme }: NavbarProps) {
         <a href="/" className="hover:text-pink-500 transition-colors text-current">Home</a>
         <a href="/aboutus" className="hover:text-pink-500 transition-colors text-current">Sobre nós</a>
         <a href="/mercado" className="hover:text-pink-500 transition-colors text-current">Mercado</a>
+        <a href="/emalta" className="hover:text-pink-500 transition-colors text-current">Em Alta</a>
         <a href="/projeto" className="hover:text-pink-500 transition-colors text-current">Projeto</a>
         <a href="/form" className="hover:text-pink-500 transition-colors text-current">Contato</a>
       </nav>
