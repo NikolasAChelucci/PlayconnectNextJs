@@ -45,7 +45,7 @@ export default function Projeto() {
         <div className={`p-8 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105
           ${isLightMode ? 'bg-gray-100 text-black hover:shadow-pink-500/50' : 'bg-gray-900 text-white hover:shadow-pink-500/50'}`}>
           <h2 className="text-2xl font-bold text-pink-500 mb-4">VISÃO GERAL DO PROJETO</h2>
-          <p className="leading-relaxed">
+          <p className="text-lg leading-relaxed tracking-wide">
             Conectando criadores e influenciadores na nova era dos jogos independentes.
           </p>
         </div>
@@ -55,7 +55,7 @@ export default function Projeto() {
         <div className={`p-8 rounded-lg shadow-lg transition-transform duration-300 hover:scale-105
           ${isLightMode ? 'bg-gray-100 text-black hover:shadow-pink-500/50' : 'bg-gray-900 text-white hover:shadow-pink-500/50'}`}>
           <h2 className="text-2xl font-bold text-pink-500 mb-4">RECURSOS PRINCIPAIS</h2>
-          <ul className="list-disc list-inside space-y-2">
+          <ul className="list-disc list-inside space-y-2 text-lg leading-relaxed tracking-wide">
             <li>Catálogo dinâmico de jogos independentes</li>
             <li>Sistema de matchmaking entre desenvolvedores e streamers</li>
             <li>Dashboard analítico em tempo real</li>
@@ -91,7 +91,7 @@ export default function Projeto() {
                 <span className="text-xl mt-1">{item.emoji}</span>
                 <div>
                   <h3 className="text-lg font-semibold">{item.fase}</h3>
-                  <p>{item.descricao}</p>
+                  <p className="text-lg leading-relaxed tracking-wide">{item.descricao}</p>
                 </div>
               </div>
             ))}
@@ -100,7 +100,7 @@ export default function Projeto() {
       </section>
 
       <footer className="text-center mt-12 text-sm opacity-70">
-        <p>© 2025 PlayConnect. Todos os direitos reservados.</p>
+        <p className="text-lg leading-relaxed tracking-wide">© 2025 PlayConnect. Todos os direitos reservados.</p>
       </footer>
 
       {/* Scripts externos */}
