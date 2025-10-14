@@ -22,15 +22,15 @@ export default function AboutUs() {
           <div className={`p-8 rounded-lg shadow-lg text-center transition-transform duration-300 hover:scale-105 ${isLightMode ? 'bg-gray-100 text-black hover:shadow-pink-500/50' : 'bg-gray-900 text-white hover:shadow-pink-500/50'}`}>
             <h1 className="text-4xl font-semibold mb-6 text-center text-pink-500">Um pouco sobre nós</h1>
 
-            <p className="mb-4 leading-relaxed">
+            <p className="mb-4 text-lg leading-relaxed tracking-wide">
               A PlayConnect nasceu da paixão por jogos e da percepção de uma lacuna no mercado: a dificuldade que desenvolvedores independentes enfrentam para ganhar visibilidade, enquanto streamers buscam constantemente por novos conteúdos para suas audiências.
             </p>
 
-            <p className="mb-4 leading-relaxed">
+            <p className="mb-4 text-lg leading-relaxed tracking-wide">
               Nossa plataforma foi concebida como uma ponte inteligente entre esses dois universos, criando um ecossistema onde:
             </p>
 
-            <ul className="list-disc list-inside mb-8 space-y-2">
+            <ul className="list-disc list-inside mb-8 space-y-2 text-lg leading-relaxed tracking-wide">
               <li>Desenvolvedores encontram exposição para seus jogos</li>
               <li>Streamers descobrem títulos exclusivos</li>
               <li>Jogadores acessam experiências únicas</li>
@@ -40,14 +40,14 @@ export default function AboutUs() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 max-w-3xl mx-auto">
             <div className={`p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 ${isLightMode ? 'bg-gray-100 text-black hover:shadow-pink-500/50' : 'bg-gray-900 text-white hover:shadow-pink-500/50'}`}>
               <h2 className="text-2xl font-semibold mb-3 text-pink-500">Nossa Missão</h2>
-              <p>
+              <p className="text-lg leading-relaxed tracking-wide">
                 Democratizar o acesso ao mercado de games, proporcionando ferramentas que impulsionem desenvolvedores independentes e criadores de conteúdo, enriquecendo toda a comunidade gamer.
               </p>
             </div>
 
             <div className={`p-6 rounded-lg shadow-md transition-transform duration-300 hover:scale-105 ${isLightMode ? 'bg-gray-100 text-black hover:shadow-pink-500/50' : 'bg-gray-900 text-white hover:shadow-pink-500/50'}`}>
               <h2 className="text-2xl font-semibold mb-3 text-pink-500">Nossa Visão</h2>
-              <p>
+              <p className="text-lg leading-relaxed tracking-wide">
                 Ser a principal plataforma de conexão entre desenvolvedores e influenciadores na América Latina até 2027, reconhecida por fomentar a inovação e diversidade no cenário de jogos independentes.
               </p>
             </div>
@@ -57,7 +57,9 @@ export default function AboutUs() {
         {/* Conheça Nossa Equipe */}
         <section>
           <h2 className="text-3xl font-semibold mb-4">Conheça Nossa Equipe</h2>
-          <p className="mb-6">Somos um time multidisciplinar unido pela paixão por games e tecnologia:</p>
+          <p className="mb-6 text-lg leading-relaxed tracking-wide">
+            Somos um time multidisciplinar unido pela paixão por games e tecnologia:
+          </p>
 
           <div className="flex gap-4 mb-6">
             <button
@@ -96,58 +98,56 @@ export default function AboutUs() {
               <Image src="/images/Gabriel.png" alt="Gabriel" width={300} height={300} className="rounded" />
               <h3 className="mt-4 text-xl font-semibold">Gabriel Silva</h3>
               <h4 className="text-sm text-gray-600 dark:text-gray-400">RM: 564133</h4>
-              <p className="mt-2 text-center">Estudante de Sistemas de Informação na FIAP</p>
+              <p className="mt-2 text-center text-lg leading-relaxed tracking-wide">Estudante de Sistemas de Informação na FIAP</p>
             </div>
 
             <div className="w-60 flex flex-col items-center bg-gray-100 dark:bg-gray-800 p-4 rounded shadow">
               <Image src="/images/luiz.jpg" alt="Luiz Otavio" width={300} height={300} className="rounded" />
               <h3 className="mt-4 text-xl font-semibold">Luiz Otávio Fontes</h3>
               <h4 className="text-sm text-gray-600 dark:text-gray-400">RM: 561537</h4>
-              <p className="mt-2 text-center">Assistente Pleno de Segurança da Informação & Estudante de Sistemas de Informação FIAP</p>
+              <p className="mt-2 text-center text-lg leading-relaxed tracking-wide">
+                Assistente Pleno de Segurança da Informação & Estudante de Sistemas de Informação FIAP
+              </p>
             </div>
 
             <div className="w-60 flex flex-col items-center bg-gray-100 dark:bg-gray-800 p-4 rounded shadow">
               <Image src="/images/nikolas.png" alt="Nikolas" width={300} height={300} className="rounded" />
               <h3 className="mt-4 text-xl font-semibold">Nikolas Chelucci</h3>
               <h4 className="text-sm text-gray-600 dark:text-gray-400">RM: 565645</h4>
-              <p className="mt-2 text-center">Desenvolvedor Fullstack</p>
+              <p className="mt-2 text-center text-lg leading-relaxed tracking-wide">Desenvolvedor Fullstack</p>
             </div>
 
             <div className="w-60 flex flex-col items-center bg-gray-100 dark:bg-gray-800 p-4 rounded shadow">
               <Image src="/images/Samuel.png" alt="Samuel" width={300} height={300} className="rounded" />
               <h3 className="mt-4 text-xl font-semibold">Samuel Cardoso</h3>
               <h4 className="text-sm text-gray-600 dark:text-gray-400">RM: 566170</h4>
-              <p className="mt-2 text-center">Engenheiro de QA</p>
+              <p className="mt-2 text-center text-lg leading-relaxed tracking-wide">Engenheiro de QA</p>
             </div>
           </div>
 
-          <div
-            id="antigo"
-            className="flex flex-wrap gap-8"
-            style={{ display: 'none' }}
-          >
+          <div id="antigo" className="flex flex-wrap gap-8" style={{ display: 'none' }}>
             {/* membros antigos */}
             <div className="w-60 flex flex-col items-center bg-gray-100 dark:bg-gray-800 p-4 rounded shadow">
               <Image src="/images/Eduardo.png" alt="Eduardo" width={300} height={300} className="rounded" />
               <h3 className="mt-4 text-xl font-semibold">Eduardo Mota</h3>
               <h4 className="text-sm text-gray-600 dark:text-gray-400">RM: 563418</h4>
-              <p>Scrum Master</p>
-              <p>Liderou a concepção inicial da plataforma</p>
+              <p className="text-lg leading-relaxed tracking-wide">Scrum Master</p>
+              <p className="text-lg leading-relaxed tracking-wide">Liderou a concepção inicial da plataforma</p>
             </div>
 
             <div className="w-60 flex flex-col items-center bg-gray-100 dark:bg-gray-800 p-4 rounded shadow">
               <Image src="/images/Pablo.png" alt="Pablo" width={300} height={300} className="rounded" />
               <h3 className="mt-4 text-xl font-semibold">Pablo Calil</h3>
               <h4 className="text-sm text-gray-600 dark:text-gray-400">RM: 562914</h4>
-              <p>Ex-Desenvolvedor Front-end (2023-2024)</p>
-              <p>Responsável pela arquitetura inicial da interface do usuário.</p>
+              <p className="text-lg leading-relaxed tracking-wide">Ex-Desenvolvedor Front-end (2023-2024)</p>
+              <p className="text-lg leading-relaxed tracking-wide">Responsável pela arquitetura inicial da interface do usuário.</p>
             </div>
 
             <div className="w-60 flex flex-col items-center bg-gray-100 dark:bg-gray-800 p-4 rounded shadow">
               <Image src="/images/neto.jpg" alt="Neto" width={300} height={300} className="rounded" />
               <h3 className="mt-4 text-xl font-semibold">Carlos Neto</h3>
               <h4 className="text-sm text-gray-600 dark:text-gray-400">RM: 561502</h4>
-              <p className="mt-2 text-center">Especialista em Direito Digital</p>
+              <p className="mt-2 text-center text-lg leading-relaxed tracking-wide">Especialista em Direito Digital</p>
             </div>
           </div>
         </section>
