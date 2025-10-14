@@ -4,7 +4,6 @@ import { useState } from 'react';
 import Script from 'next/script';
 import Navbar from './components/navbar';
 
-
 export default function Home() {
   const [isLightMode, setIsLightMode] = useState(false);
 
@@ -19,7 +18,7 @@ export default function Home() {
         {/* Bloco 1 */}
         <div className={`p-8 rounded-lg shadow-lg text-center transition-transform duration-300 hover:scale-105 ${isLightMode ? 'bg-gray-100 text-black hover:shadow-pink-500/50' : 'bg-gray-900 text-white hover:shadow-pink-500/50'}`}>
           <h2 className="text-3xl font-bold uppercase mb-4 text-pink-500">Bem-vindo ao PlayConnect</h2>
-          <p className="text-base leading-relaxed max-w-4xl mx-auto">
+          <p className="text-lg leading-relaxed tracking-wide max-w-4xl mx-auto">
             O <strong>PlayConnect</strong> é a ponte entre desenvolvedores independentes e streamers, conectando criadores de jogos com influenciadores digitais. Nossa plataforma permite que streamers descubram e testem novos jogos antes do lançamento, enquanto desenvolvedores ampliam sua visibilidade e recebem feedback valioso da comunidade.
           </p>
         </div>
@@ -27,7 +26,7 @@ export default function Home() {
         {/* Bloco 2 */}
         <div className={`p-8 rounded-lg shadow-lg text-center transition-transform duration-300 hover:scale-105 ${isLightMode ? 'bg-gray-100 text-black hover:shadow-pink-500/50' : 'bg-gray-900 text-white hover:shadow-pink-500/50'}`}>
           <h2 className="text-3xl font-bold uppercase mb-4 text-pink-500">Como Funciona?</h2>
-          <p className="text-base leading-relaxed max-w-4xl mx-auto mb-4">
+          <p className="text-lg leading-relaxed tracking-wide max-w-4xl mx-auto mb-4">
             Participar do <strong>PlayConnect</strong> é simples e intuitivo:
           </p>
           <ol className="list-decimal list-inside text-left sm:text-center max-w-3xl mx-auto space-y-2">
@@ -40,7 +39,7 @@ export default function Home() {
         {/* Bloco 3 */}
         <div className={`p-8 rounded-lg shadow-lg text-center transition-transform duration-300 hover:scale-105 ${isLightMode ? 'bg-gray-100 text-black hover:shadow-pink-500/50' : 'bg-gray-900 text-white hover:shadow-pink-500/50'}`}>
           <h2 className="text-3xl font-bold uppercase mb-4 text-pink-500">Por que usar o PlayConnect?</h2>
-          <ul className="list-disc list-inside text-left sm:text-center max-w-3xl mx-auto space-y-2 text-base leading-relaxed">
+          <ul className="list-disc list-inside text-left sm:text-center max-w-3xl mx-auto space-y-2 text-lg leading-relaxed tracking-wide">
             <li><strong>Aumento de alcance:</strong> Desenvolvedores ganham maior visibilidade com a divulgação de influenciadores.</li>
             <li><strong>Marketing orgânico e autêntico:</strong> Streamers promovem os jogos para audiências altamente engajadas.</li>
             <li><strong>Feedback direto e aprimoramento contínuo:</strong> Desenvolvedores recebem insights valiosos para aprimorar seus jogos.</li>
