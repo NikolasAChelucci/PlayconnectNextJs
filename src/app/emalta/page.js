@@ -10,7 +10,6 @@ export default function EmAlta() {
 
   const toggleTheme = () => setIsLightMode(prev => !prev);
 
-  // O fetch aqui busca os dados do JSON dentro da pasta public
   useEffect(() => {
     fetch("/data/games.json")
       .then((res) => res.json())
@@ -26,8 +25,16 @@ export default function EmAlta() {
         <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center">
           Jogos em Alta
         </h1>
+
+        {/* Parágrafos informativos adicionados */}
+        <p className="text-center text-lg text-muted-foreground mb-4">
+          Nesta seção, você confere os títulos mais populares da comunidade PlayConnect.
+        </p>
+        <p className="text-center text-lg text-muted-foreground mb-4">
+          Esses jogos estão em destaque por seu engajamento, inovação e pelo apoio da comunidade de criadores.
+        </p>
         <p className="text-center text-lg text-muted-foreground mb-10">
-          A PlayConnect impulsiona o crescimento dos jogos independentes, conectando desenvolvedores e streamers, veja o resultado.
+          Explore, descubra novas experiências e apoie os desenvolvedores independentes!
         </p>
 
         {games.length === 0 ? (
