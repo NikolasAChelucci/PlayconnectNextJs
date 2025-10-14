@@ -10,19 +10,32 @@ import {
   CartesianGrid,
   Tooltip,
 } from "recharts";
+import { dadosDeUso } from "../utils/dadosdeuso";
 
-import { dadosDeUso } from "../utils/dadosdeuso"; // importa o módulo correto
+// Componente customizado para Tooltip
+const CustomTooltip = ({ active, payload, label }) => {
+  if (active && payload && payload.length) {
+    const data = payload[0].payload;
+    return (
+      <div className="bg-green-900 text-green-100 p-2 rounded shadow-lg border border-green-700">
+        <p className="font-semibold">Mês: {label}</p>
+        <p>
+          {data.horas} horas {data.previsto ? "(previsto)" : ""}
+        </p>
+      </div>
+    );
+  }
+  return null;
+};
 
 export default function Perfil() {
   const [isLightMode, setIsLightMode] = useState(false);
-
   const toggleTheme = () => setIsLightMode((prev) => !prev);
 
-  // Função para prever horas futuras com base na taxa de crescimento
   function preverHorasFuturas(uso, mesesFuturos) {
     const ultimaMes = uso.horasAssistidas[uso.horasAssistidas.length - 1].mes;
     const taxa =
-      uso.horasAssistidas[1].horas / uso.horasAssistidas[0].horas - 1; // taxa média simples
+      uso.horasAssistidas[1].horas / uso.horasAssistidas[0].horas - 1;
     const previsao = [];
 
     for (let i = 1; i <= mesesFuturos; i++) {
@@ -31,13 +44,12 @@ export default function Perfil() {
         uso.horasAssistidas[uso.horasAssistidas.length - 1].horas *
           Math.pow(1 + taxa, i)
       );
-      previsao.push({ mes, horas });
+      previsao.push({ mes, horas, previsto: true });
     }
 
     return previsao;
   }
 
-  // Ordena os jogos pelo total de horas assistidas (soma de todos os meses)
   const jogosOrdenados = [...dadosDeUso].sort((a, b) => {
     const totalA = a.horasAssistidas.reduce((sum, item) => sum + item.horas, 0);
     const totalB = b.horasAssistidas.reduce((sum, item) => sum + item.horas, 0);
@@ -62,8 +74,20 @@ export default function Perfil() {
 
         <div className="flex flex-col gap-10">
           {jogosOrdenados.map((game, index) => {
-            const previsaoFutura = preverHorasFuturas(game, 3); // prevê 3 meses futuros
-            const dadosComPrevisao = [...game.horasAssistidas, ...previsaoFutura];
+            const previsaoFutura = preverHorasFuturas(game, 3);
+            const dadosComPrevisao = [
+              ...game.horasAssistidas.map((d) => ({ ...d, previsto: false })),
+              ...previsaoFutura,
+            ];
+
+            const totalPrevisto = previsaoFutura.reduce((sum, d) => sum + d.horas, 0);
+            const taxaMedia = (
+              ((game.horasAssistidas[game.horasAssistidas.length - 1].horas /
+                game.horasAssistidas[0].horas -
+                1) *
+                100
+              ).toFixed(1)
+            );
 
             return (
               <div
@@ -87,6 +111,14 @@ export default function Perfil() {
                     Total de horas assistidas nos últimos meses
                   </p>
 
+                  <p className="text-sm text-muted-foreground mt-1">
+                    Previsão de crescimento nos próximos 3 meses:{" "}
+                    <strong>{totalPrevisto} horas</strong>
+                  </p>
+                  <p className="text-sm text-muted-foreground">
+                    Crescimento médio mensal: <strong>{taxaMedia}%</strong>
+                  </p>
+
                   <BarChart
                     width={400}
                     height={200}
@@ -103,12 +135,12 @@ export default function Perfil() {
                       }}
                     />
                     <YAxis />
-                    <Tooltip />
+                    <Tooltip content={<CustomTooltip />} />
                     <Bar
                       dataKey="horas"
-                      fill="#82ca9d"
                       barSize={30}
                       name="Horas Assistidas"
+                      fill={(data) => (data.previsto ? "#22c55e" : "#4ade80")}
                     />
                   </BarChart>
                 </div>
