@@ -3,6 +3,8 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/navbar";
 import GameCard from "../components/gamecard";
+import VoltarTopo from '../components/VoltarTopo';
+
 
 export default function EmAlta() {
   const [games, setGames] = useState([]);
@@ -20,6 +22,7 @@ export default function EmAlta() {
   return (
     <div className={`min-h-screen transition-colors duration-500 ${isLightMode ? 'bg-white text-black' : 'bg-background text-foreground'}`}>
       <Navbar isLightMode={isLightMode} toggleTheme={toggleTheme} />
+      <VoltarTopo />
 
       <main className="max-w-5xl mx-auto p-8">
         <h1 className="text-3xl sm:text-4xl font-bold mb-4 text-center">

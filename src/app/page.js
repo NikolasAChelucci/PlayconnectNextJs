@@ -3,6 +3,8 @@
 import { useState } from 'react';
 import Script from 'next/script';
 import Navbar from './components/navbar';
+import VoltarTopo from './components/VoltarTopo';
+
 
 export default function Home() {
   const [isLightMode, setIsLightMode] = useState(false);
@@ -74,6 +76,7 @@ export default function Home() {
       <Script src="https://vlibras.gov.br/app/vlibras-plugin.js" strategy="afterInteractive" />
       <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" strategy="afterInteractive" />
       <Script src="/JS/index.js" strategy="afterInteractive" />
+      <VoltarTopo />
     </main>
   );
 }

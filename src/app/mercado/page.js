@@ -3,6 +3,8 @@
 import { useState, useEffect } from 'react';
 import Script from 'next/script';
 import Navbar from '../components/navbar'; // Importando Navbar reutilizável
+import VoltarTopo from '../components/VoltarTopo';
+
 
 export default function Mercado() {
   const [isLightMode, setIsLightMode] = useState(false);
@@ -33,6 +35,7 @@ export default function Mercado() {
     <main className={`${isLightMode ? 'bg-white text-black' : 'bg-black text-white'} min-h-screen px-5 py-12 transition-colors duration-500`}>
 
       <Navbar isLightMode={isLightMode} toggleTheme={toggleTheme} />
+      <VoltarTopo />
 
       <section className="pesquisa-container flex flex-col gap-12 justify-center px-4 sm:px-8 max-w-5xl mx-auto">
 

@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Navbar from '../components/navbar'; // Navbar reutilizável
+import VoltarTopo from '../components/VoltarTopo';
 
 export default function EducacaoSocioambiental() {
   const [isLightMode, setIsLightMode] = useState(false);
@@ -14,6 +15,7 @@ export default function EducacaoSocioambiental() {
       } min-h-screen px-5 py-12 transition-colors duration-500`}
     >
       <Navbar isLightMode={isLightMode} toggleTheme={toggleTheme} />
+      <VoltarTopo />
 
       <section className="pesquisa-container flex flex-col gap-12 justify-center px-4 sm:px-8 max-w-5xl mx-auto">
         {/* Bloco fixo 1 */}

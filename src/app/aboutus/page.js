@@ -3,6 +3,8 @@
 import Image from 'next/image';
 import { useState } from 'react';
 import Navbar from '../components/navbar'; // Importa a Navbar
+import VoltarTopo from '../components/VoltarTopo';
+
 
 export default function AboutUs() {
   const [isLightMode, setIsLightMode] = useState(false);
@@ -13,6 +15,7 @@ export default function AboutUs() {
     <main className={`${isLightMode ? 'bg-white text-black' : 'bg-black text-white'} min-h-screen px-5 py-12 transition-colors duration-500`}>
       {/* Usa o componente Navbar importado */}
       <Navbar isLightMode={isLightMode} toggleTheme={toggleTheme} />
+      <VoltarTopo />
 
       {/* Conteúdo Principal */}
       <section className="max-w-5xl mx-auto px-4 sm:px-8 py-10 space-y-10">
