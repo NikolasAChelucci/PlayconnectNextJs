@@ -99,7 +99,7 @@ export default function AboutUs() {
             {/* membros atuais */}
             <div className="w-60 flex flex-col items-center bg-gray-100 dark:bg-gray-800 p-4 rounded shadow">
               <Image src="/images/Gabriel.png" alt="Gabriel" width={300} height={300} className="rounded" />
-              <h3 className="mt-4 text-xl font-semibold">Gabriel Silva</h3>
+              <h3 className="mt-4 text-xl font-semibold">Gabriel Marcos</h3>
               <h4 className="text-sm text-gray-600 dark:text-gray-400">RM: 564133</h4>
               <p className="mt-2 text-center text-lg leading-relaxed tracking-wide">Estudante de Sistemas de Informação na FIAP</p>
             </div>
